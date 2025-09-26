@@ -1,5 +1,4 @@
 import { Component, inject } from "@angular/core";
-import { TimerRounderComponent } from "../../components/top/match/timer-rounder/timer-rounder.component";
 import { ScoreboardComponent } from "../../components/shopping/scoreboard/scoreboard.component";
 import { DataModelService } from "../../services/dataModel.service";
 import { SeriesMapsComponent } from "../../components/top/auxiliary/series-maps/series-maps.component";
@@ -18,7 +17,6 @@ import { TimeoutComponent } from "../../components/common/timeout/timeout.compon
 @Component({
   selector: "app-match-overlay",
   imports: [
-    TimerRounderComponent,
     ScoreboardComponent,
     SeriesMapsComponent,
     RoundNumberComponent,

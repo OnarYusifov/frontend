@@ -3,6 +3,42 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans&family=Montserrat:wght@400;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");
+@font-face {
+  font-family: "DIN Next W1G";
+  src: url("/assets/fonts/DINNextW1G-Medium.otf") format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "DIN Next W1G";
+  src: url("/assets/fonts/DINNextW1G-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "DIN Next W1G";
+  src: url("/assets/fonts/DINNextW1G-Regular.otf") format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "DIN Next W1G";
+  src: url("/assets/fonts/DINNextW1G-Light.otf") format("opentype");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Foundry Gridnik W03";
+  src: url("/assets/fonts/Foundry Gridnik W03 Bold.ttf") format("truetype"),
+}
+@font-face {
+  font-family: "Foundry Gridnik W03";
+  src: url("/assets/fonts/FoundryGridnikW03-ExtraBold.ttf") format("truetype"),
+}
+@font-face {
+  font-family: "Replica";
+  src: url("/assets/fonts/Replica-Bold.ttf") format("truetype"),
+}
+@font-face {
+  font-family: "Tungsten";
+  src: url("/assets/fonts/Tungsten-Bold.ttf") format("truetype"),
+}
 
 @import "tailwindcss";
 @import "./animations.css";
@@ -31,6 +67,18 @@
 }
 @utility font-unbounded {
   font-family: Unbounded, Helvetica;
+}
+@utility font-dinnext {
+  font-family: "DIN Next W1G", Helvetica;
+}
+@utility font-foundry {
+  font-family: "Foundry Gridnik W03", Helvetica;
+}
+@utility font-replica {
+  font-family: Replica, Helvetica;
+}
+@utility font-tungsten {
+  font-family: Tungsten, Helvetica;
 }
 
 /* Custom classes to size a component according to its relative size within a 1080p screen */
