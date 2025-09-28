@@ -4,32 +4,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");
 @font-face {
-  font-family: "DIN Next W1G";
-  src: url("/assets/fonts/DINNextW1G-Medium.otf") format("opentype");
-  font-weight: 500;
+  font-family: "DIN Next W1G Medium";
+  src: url("/assets/fonts/DINNextW1G/dinnextw1g_medium.otf") format("opentype");
 }
 @font-face {
-  font-family: "DIN Next W1G";
-  src: url("/assets/fonts/DINNextW1G-Bold.otf") format("opentype");
-  font-weight: 700;
+  font-family: "DIN Next W1G Bold";
+  src: url("/assets/fonts/DINNextW1G/dinnextw1g_bold.otf") format("opentype");
 }
 @font-face {
-  font-family: "DIN Next W1G";
-  src: url("/assets/fonts/DINNextW1G-Regular.otf") format("opentype");
-  font-weight: 400;
+  font-family: "DIN Next W1G Regular";
+  src: url("/assets/fonts/DINNextW1G/dinnextw1g_regular.otf") format("opentype");
 }
 @font-face {
-  font-family: "DIN Next W1G";
-  src: url("/assets/fonts/DINNextW1G-Light.otf") format("opentype");
-  font-weight: 300;
+  font-family: "DIN Next W1G Light";
+  src: url("/assets/fonts/DINNextW1G/dinnextw1g_light.otf") format("opentype");
 }
 @font-face {
-  font-family: "Foundry Gridnik W03";
-  src: url("/assets/fonts/Foundry Gridnik W03 Bold.ttf") format("truetype"),
+  font-family: "Foundry Gridnik W03 Bold";
+  src: url("/assets/fonts/FoundryGridnikW03/Foundry Gridnik W03 Bold.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Foundry Gridnik W03";
-  src: url("/assets/fonts/FoundryGridnikW03-ExtraBold.ttf") format("truetype"),
+  font-family: "Foundry Gridnik W03 Extra Bold";
+  src: url("/assets/fonts/FoundryGridnikW03/FoundryGridnikW03-ExtraBold.ttf") format("truetype");
 }
 @font-face {
   font-family: "Replica";
@@ -68,11 +64,24 @@
 @utility font-unbounded {
   font-family: Unbounded, Helvetica;
 }
-@utility font-dinnext {
-  font-family: "DIN Next W1G", Helvetica;
+@utility font-dinnext-light {
+  font-family: "DIN Next W1G Light", Helvetica;
 }
-@utility font-foundry {
-  font-family: "Foundry Gridnik W03", Helvetica;
+@utility font-dinnext-regular {
+  font-family: "DIN Next W1G Regular", Helvetica;
+}
+
+@utility font-dinnext-medium {
+  font-family: "DIN Next W1G Medium", Helvetica;
+}
+@utility font-dinnext-bold {
+  font-family: "DIN Next W1G Bold", Helvetica;
+}
+@utility font-foundry-bold {
+  font-family: "Foundry Gridnik W03 Bold", Helvetica;
+}
+@utility font-foundry-extrabold {
+  font-family: "Foundry Gridnik W03 Extra Bold", Helvetica;
 }
 @utility font-replica {
   font-family: Replica, Helvetica;

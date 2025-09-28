@@ -1,5 +1,8 @@
 @if (dataModel.sponsorInfo().enabled) {
-  <div class="vw-240 vh-88 relative rounded-b-md bg-black/60">
+  <div
+    class="vw-240 vh-88 relative bg-no-repeat bg-center bg-contain"
+    [style.background-image]="'url(assets/topscore/sponsorBox.svg)'"
+  >
     @for (sponsor of dataModel.sponsorInfo().sponsors; track $index) {
       <img
         animate.enter="animate-fade-in"

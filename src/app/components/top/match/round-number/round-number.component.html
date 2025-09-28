@@ -1,6 +1,6 @@
-<p class="font-montserrat text-base font-bold text-nowrap text-white/60">
-  @if (otNumber() > 0) {
-    {{ TranslateKeys.Top_OvertimeNumber | translate: { otNumber: otNumber() } }}
+<p class="font-foundry-bold text-base font-weight-700 tracking-[0.08em] text-nowrap text-[#A1A9AC]">
+  @if (isOvertime()) {
+    {{ TranslateKeys.Top_Overtime | translate }}
   } @else {
     {{ TranslateKeys.Top_RoundNumber | translate: { rounds: dataModel.match().roundNumber } }}
   }

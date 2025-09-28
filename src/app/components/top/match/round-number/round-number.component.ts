@@ -13,9 +13,5 @@ export class RoundNumberComponent {
   dataModel = inject(DataModelService);
   TranslateKeys = TranslateKeys;
 
-  otNumber = computed(() => {
-    const adjustedRound = this.dataModel.match().roundNumber - this.dataModel.match().firstOtRound;
-    const otNumber = Math.floor(adjustedRound / 2 + 1);
-    return otNumber;
-  });
+  isOvertime = computed(() => this.dataModel.match().roundNumber > this.dataModel.match().firstOtRound);
 }

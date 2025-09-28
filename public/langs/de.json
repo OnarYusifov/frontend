@@ -12,7 +12,7 @@
   "mapinfo.next": "Nächste: {{map}}",
   "topinfo.watermark": "Powered by Spectra",
   "topscore.round": "RUNDE {{rounds}}",
-  "topscore.overtime": "VLG. {{otNumber}}",
+  "topscore.overtime": "VLG.",
   "team.attacker": "ANGREIFER",
   "team.defender": "VERTEIDIGER",
   "scoreboard.spent": "DIESE RUNDE AUSGEGEBEN",

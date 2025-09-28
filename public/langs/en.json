@@ -12,7 +12,7 @@
   "mapinfo.next": "Next: {{map}}",
   "topinfo.watermark": "Powered by Spectra",
   "topscore.round": "ROUND {{rounds}}",
-  "topscore.overtime": "OVERTIME {{otNumber}}",
+  "topscore.overtime": "OVERTIME",
   "team.attacker": "ATTACKER",
   "team.defender": "DEFENDER",
   "scoreboard.spent": "SPENT THIS ROUND",
