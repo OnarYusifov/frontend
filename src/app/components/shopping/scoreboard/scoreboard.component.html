@@ -1,44 +1,11 @@
 @if (isShown()) {
   <div
-    class="vw-1920 flex flex-row justify-between"
-    animate.enter="animate-teamnames-in animate-duration-300"
-    animate.leave="animate-teamnames-out animate-duration-300"
-  >
-    <!-- team headers -->
-    @for (team of dataModel.teams(); track $index) {
-      <div
-        class="vh-64 vw-600 bg-header-fade-left mx-5 flex flex-row items-center rounded-lg"
-        [class.bg-header-fade-right]="$index > 0"
-        [class.flex-row-reverse!]="$index > 0"
-      >
-        <img class="mx-2 max-h-4/5 max-w-4/5" [src]="team.teamUrl" />
-        <div class="font-unbounded mx-2 flex flex-col text-white">
-          <p class="text-4xl font-extrabold uppercase">{{ team.teamName }}</p>
-          @if (!dataModel.minimalMode()) {
-            <div
-              class="flex flex-row gap-1 text-xs font-bold"
-              [class.flex-row-reverse!]="$index > 0"
-            >
-              <img class="vw-12 vh-12 mt-0.5" src="assets/misc/ValorantCreditsWhite.svg" />
-              <p class="">{{ team.spentThisRound }}</p>
-              <p class="text-white/60 uppercase">
-                {{ TranslateKeys.Scoreboard_Spent | translate }}
-              </p>
-            </div>
-          }
-        </div>
-      </div>
-    }
-  </div>
-
-  <div
-    class="vw-1920 mt-2 flex flex-row justify-between"
-    animate.leave="animate-scoreboard-out animate-duration-300"
+    class="vw-1920 flex flex-row justify-between bg-[#171C22B3] mt-22"
   >
     <!-- Score blocks -->
     @for (team of dataModel.teams(); track $index; let teamIndex = $index) {
       <div
-        class="bg-background mx-5 flex flex-col gap-2.5 rounded-sm px-5 py-4"
+        class= "mx-5 flex flex-col gap-2.5 rounded-sm px-5 py-4"
         animate.enter="animate-scoreboard-in animate-duration-300"
       >
         @for (player of team.players; track $index) {

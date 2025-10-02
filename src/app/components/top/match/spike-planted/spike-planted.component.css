@@ -42,7 +42,6 @@
   filter: brightness(0) invert(1);
 }
 
-/* Background Rectangle */
 .spike-background-rect {
   position: fixed;
   top: 0;
@@ -55,12 +54,10 @@
   z-index: 3;
 }
 
-/* Rectangle Grow Animation (on enter) */
 .animate-rect-grow {
   animation: rect-grow 0.3s ease-out;
 }
 
-/* Rectangle Shrink Animation (on leave) */
 .animate-rect-shrink {
   animation: rect-shrink 0.3s ease-out;
 }

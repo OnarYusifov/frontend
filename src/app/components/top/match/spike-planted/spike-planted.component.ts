@@ -55,7 +55,6 @@ export class SpikePlantedComponent {
   protected timeoutFunction(durationLeft: number, lastTimeout: number) {
     this.blinkState = !this.blinkState;
     
-    // Trigger a short pulse effect
     this.triggerPulse();
 
     const now = Date.now();
@@ -87,13 +86,10 @@ export class SpikePlantedComponent {
   }
 
   protected triggerPulse() {
-    // Clear any existing pulse timer
     clearTimeout(this.pulseTimerRef);
     
-    // Start pulse effect
     this.pulseState = true;
     
-    // End pulse effect after a short duration (200ms)
     this.pulseTimerRef = setTimeout(() => {
       this.pulseState = false;
     }, 200);
