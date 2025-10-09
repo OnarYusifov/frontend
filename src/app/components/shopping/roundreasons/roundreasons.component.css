@@ -58,3 +58,14 @@
   animation: animations-reasons 0.15s ease-in-out;
   will-change: opacity, transform;
 }
+
+/* Round reason squares */
+.attacker-round-won {
+  background-color: color-mix(in srgb, var(--color-attacker-roundReasons) 74%, transparent) !important;
+  border-color: color-mix(in srgb, var(--color-attacker-primary) 20%, transparent) !important;
+}
+
+.defender-round-won {
+  background-color: color-mix(in srgb, var(--color-defender-roundReasons) 74%, transparent) !important;
+  border-color: color-mix(in srgb, var(--color-defender-primary) 20%, transparent) !important;
+}

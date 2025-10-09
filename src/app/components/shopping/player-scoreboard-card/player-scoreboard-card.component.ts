@@ -3,12 +3,12 @@ import { AgentNameService } from "../../../services/agentName.service";
 import { AgentRoleService } from "../../../services/agentRole.service";
 import { DataModelService } from "../../../services/dataModel.service";
 import { DisplayNameService } from "../../../services/displayName.service";
-import { UltimateTrackerComponent } from "../../common/ultimate-tracker/ultimate-tracker.component";
+import { UltimateComponent } from "../../common/ultimate-tracker/ultimate-tracker.component";
 import { AbilitiesComponent } from "../../common/abilities/abilities.component";
 
 @Component({
   selector: "app-playerscore-new",
-  imports: [UltimateTrackerComponent, AbilitiesComponent],
+  imports: [AbilitiesComponent, UltimateComponent],
   templateUrl: "./player-scoreboard-card.component.html",
   styleUrl: "./player-scoreboard-card.component.css",
 })
@@ -22,10 +22,6 @@ export class PlayerScoreboardCardComponent {
   // @Input() color: "attacker" | "defender" = "defender";
   color = input<string>();
 
-  readonly backgroundClass = computed(() => {
-    return `bg-fade-${this.color()}-${this.right ? "right" : "left"}`;
-  });
-
   readonly textColor = computed(() =>
     this.color() == "attacker" ? "text-attacker-shield/80" : "text-defender-shield/80",
   );
@@ -36,6 +32,25 @@ export class PlayerScoreboardCardComponent {
 
   getAgentRole(agent: string): string {
     return AgentRoleService.getAgentRole(agent);
+  }
+
+  formatNumber(number: number): string {
+    return new Intl.NumberFormat().format(number);
+  }
+
+  getTeamColor(): string {
+    return this.color() === 'attacker' ? '#ff4557' : '#21fec2';
+  }
+
+  private static idCounter = 0;
+  private _uniqueId?: string;
+  
+  get uniqueId(): string {
+    if (!this._uniqueId) {
+      PlayerScoreboardCardComponent.idCounter++;
+      this._uniqueId = `player-${PlayerScoreboardCardComponent.idCounter}`;
+    }
+    return this._uniqueId;
   }
 }
 

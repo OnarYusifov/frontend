@@ -1,7 +1,7 @@
 import { Component, computed, inject, input, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { DataModelService } from "../../../services/dataModel.service";
 import { AbilitiesComponent } from "../../common/abilities/abilities.component";
-import { UltimateTrackerComponent } from "../../common/ultimate-tracker/ultimate-tracker.component";
+import { UltimateComponent } from "../../common/ultimate-tracker/ultimate-tracker.component";
 import { ShieldIconComponent } from "../../common/shield-icon/shield-icon.component";
 import { AgentNameService } from "../../../services/agentName.service";
 import { DisplayNameService } from "../../../services/displayName.service";
@@ -9,7 +9,7 @@ import { AgentRoleService } from "../../../services/agentRole.service";
 
 @Component({
   selector: "app-player-combat-card",
-  imports: [AbilitiesComponent, UltimateTrackerComponent, ShieldIconComponent],
+  imports: [AbilitiesComponent, UltimateComponent, ShieldIconComponent],
   templateUrl: "./player-combat-card.component.html",
   styleUrl: "./player-combat-card.component.css",
 })

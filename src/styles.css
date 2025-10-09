@@ -47,15 +47,19 @@
   );
   --color-timer: #0f1923;
   --color-background: #0f1923cc;
-  --color-credits-negative: #ff4557;
+  --color-credits-negative: #EADEAE;
 
   --color-defender-primary: #21FEC5;
   --color-defender-secondary: #61eab6;
   --color-defender-shield: #61eab6;
+  --color-defender-scoreboard: #1FFEC1;
+  --color-defender-roundReasons: #0B100F;
 
   --color-attacker-primary: #FD4756;
   --color-attacker-secondary: #ff4557;
   --color-attacker-shield: #ff838f;
+  --color-attacker-scoreboard: #FF1E31;
+  --color-attacker-roundReasons: #1D1414;
 }
 
 @utility font-montserrat {

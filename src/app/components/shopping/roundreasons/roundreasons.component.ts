@@ -10,7 +10,7 @@ import { DataModelService } from "../../../services/dataModel.service";
 export class RoundreasonsComponent {
   dataModel = inject(DataModelService);
 
-  isShown = computed(() => this.dataModel.match().roundPhase === "shopping");
+  isShown = computed(() => this.dataModel.match().roundPhase === "shopping" && this.dataModel.match().roundNumber > 1);
 
   getBackgroundClass(record: any, team: any): string {
     if (record.type === "lost" || record.type === "upcoming") {

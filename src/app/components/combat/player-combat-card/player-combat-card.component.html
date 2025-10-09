@@ -50,13 +50,13 @@
             </div>
           </div>
         }
-        <app-ultimate-tracker
-          class="w-full"
-          [class.scale-125]="player.currUltPoints === player.maxUltPoints"
-          [max]="player.maxUltPoints"
-          [full]="player.currUltPoints"
-          image="assets/ultimates/{{ player.agentInternal }}Ultimate.webp"
-        ></app-ultimate-tracker>
+          <app-ultimate class="transform -translate-y-[34%] scale-80"
+            [player]="player"
+            [color]="(color() === 'attacker' ? 'attacker' : 'defender')"
+            [match]="dataModel.match()"
+            [side]="right() ? 'right' : 'left'"
+            [hideAuxiliary]="dataModel.hideAuxiliary()">
+          </app-ultimate>
       </div>
 
       <div
