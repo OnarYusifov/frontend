@@ -16,11 +16,7 @@
   </div>
   
   <div class="w-[144px] h-[50px] bg-[#141D26]/90 border border-[#707070] flex items-center justify-center">
-    @if (!dataModel.hideAuxiliary() && player.auxiliaryAvailable.abilities) {
       <app-abilities-new-prototype class="scale-90" [player]="player"></app-abilities-new-prototype>
-    } @else {
-      <div></div>
-    }
   </div>
   
   <div class="relative" [class]="player.ultReady ? 'w-[224px] h-[52px]' : 'w-[222px] h-[50px] pr-0.5'">

@@ -108,7 +108,7 @@ export class TestingComponent implements OnInit {
               scoreboardAvailable: true,
               auxiliaryAvailable: {
                 health: true,
-                abilities: true,
+                abilities: false,
                 scoreboard: true,
               },
               kills: 0,

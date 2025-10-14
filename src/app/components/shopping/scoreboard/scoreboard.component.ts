@@ -9,7 +9,7 @@ import {
 
 @Component({
   selector: "app-scoreboard-new",
-  imports: [TranslatePipe, PlayerScoreboardCardComponent, PlayerScoreboardCardMinimalComponent],
+  imports: [PlayerScoreboardCardComponent, PlayerScoreboardCardMinimalComponent],
   templateUrl: "./scoreboard.component.html",
   styleUrl: "./scoreboard.component.css",
 })
