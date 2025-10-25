@@ -68,6 +68,21 @@ export class PlayerCombatCardComponent implements OnChanges {
       this.healthAnimationRunning = false;
     }, 200);
   }
+
+  private static idCounter = 0;
+  private _uniqueId?: string;
+  
+  get uniqueId(): string {
+    if (!this._uniqueId) {
+      PlayerCombatCardComponent.idCounter++;
+      this._uniqueId = `player-combat-${PlayerCombatCardComponent.idCounter}`;
+    }
+    return this._uniqueId;
+  }
+
+  formatNumber(number: number): string {
+    return this.dataModel.numberFormatter().format(number);
+  }
 }
 
 @Component({

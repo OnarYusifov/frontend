@@ -40,8 +40,6 @@ export class SponsorBoxComponent implements OnInit, OnDestroy {
       return;
     }
 
-    console.log('Sponsor box: Setting up rotation with', sponsorInfo.sponsors.length, 'sponsors, duration:', duration);
-
     // Clear any existing interval
     if (this.intervalId) {
       clearInterval(this.intervalId);
@@ -52,7 +50,6 @@ export class SponsorBoxComponent implements OnInit, OnDestroy {
       this.intervalId = window.setInterval(() => {
         this.currentIndex.update((i) => {
           const nextIndex = (i + 1) % sponsorInfo.sponsors.length;
-          console.log('Sponsor box: Switching from index', i, 'to', nextIndex);
           return nextIndex;
         });
       }, duration);

@@ -51,12 +51,14 @@
 
   --color-defender-primary: #21FEC5;
   --color-defender-secondary: #61eab6;
+  --color-defender-healthbarAccent: #0F3F32;
   --color-defender-shield: #61eab6;
   --color-defender-scoreboard: #1FFEC1;
   --color-defender-roundReasons: #0B100F;
 
   --color-attacker-primary: #FD4756;
   --color-attacker-secondary: #ff4557;
+  --color-attacker-healthbarAccent: #3C0D11;
   --color-attacker-shield: #ff838f;
   --color-attacker-scoreboard: #FF1E31;
   --color-attacker-roundReasons: #1D1414;

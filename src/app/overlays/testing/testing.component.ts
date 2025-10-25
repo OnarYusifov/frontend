@@ -77,8 +77,8 @@ export class TestingComponent implements OnInit {
           sponsors: ["assets/misc/logo.webp", "assets/misc/icon.webp"],
         },
         watermarkInfo: {
-          customText: "",
-          customTextEnabled: false,
+          customText: "CHAMPIONS PARIS: GRAND FINAL",
+          customTextEnabled: true,
           spectraWatermark: true,
         },
         playercamsInfo: { enable: true, enabledPlayers: ["Voodoo One#DEBUG"] },

@@ -1,5 +1,5 @@
 <div
-  class="vh-82 relative flex"
+  class="vh-90 relative flex"
   [class]="[right() ? 'right-7' : 'left-7', right() ? 'flex-row-reverse' : 'flex-row']"
 >
   <div class="vh-56 vw-90 absolute">
@@ -14,11 +14,9 @@
 
   <!-- playername container -->
   <div
-    class="vw-180 border-timer relative box-border flex flex-col items-start border-t-2 border-b-2"
-    [class.border-transparent]="!player.isAlive"
+    class="vw-180 relative flex flex-col items-start "
     [class]="[
       playerinfoBackgroundClass(),
-      right() ? 'border-r-2' : 'border-l-2',
       right() ? 'rounded-tr-md' : 'rounded-tl-md',
     ]"
     [class.!items-end]="right()"
@@ -51,15 +49,10 @@
   <!-- weapon container -->
   @if (player.isAlive) {
     <div
-      class="vw-120 border-timer relative border-t-2 border-b-2"
+      class="vw-120 relative"
       animate.enter="animate-weapon-collapse-in animate-duration-200 animate-style-both"
       animate.leave="animate-weapon-collapse-out animate-duration-100 animate-style-keep"
       [class.items-end]="right()"
-      [class]="[
-        weaponInfoBackgroundClass(),
-        right() ? 'border-l-2' : 'border-r-2',
-        right() ? 'rounded-tl-sm' : 'rounded-tr-sm',
-      ]"
       [class.right]="right()"
     >
       @if (isObserved()) {

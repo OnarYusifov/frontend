@@ -12,10 +12,4 @@ export class ShieldIconComponent {
 
   @Input({ required: true }) type!: "Heavy" | "Regen" | "Light" | "None";
   readonly side = input<string>();
-
-  get color() {
-    return this.side() == "attacker"
-      ? this.config.attackerColorShieldCurrency
-      : this.config.defenderColorShieldCurrency;
-  }
 }

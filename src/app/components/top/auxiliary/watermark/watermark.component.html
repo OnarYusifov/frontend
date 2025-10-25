@@ -1,17 +1,25 @@
 @if (dataModel.watermarkInfo().spectraWatermark || dataModel.watermarkInfo().customTextEnabled) {
   <div
-    class="vh-24 font-dinnext-medium tracking-[0.04em] flex flex-row items-center justify-center overflow-hidden rounded-b-lg text-center text-[0.78vw] text-white uppercase"
+    class="vh-24 font-dinnext-medium tracking-[0.04em] flex flex-row items-center justify-center overflow-hidden rounded-b-lg text-center text-[0.78vw] text-white uppercase relative"
     [class]="dataModel.sponsorInfo().enabled ? 'vw-270' : 'vw-500'"
   >
-    @if (dataModel.watermarkInfo().spectraWatermark) {
-      <img src="assets/misc/icon.webp" class="max-h-5 max-w-5 px-0.5 py-0.5 align-middle" />
-      <div class="relative flex h-full justify-center" [class]="dataModel.watermarkInfo().customTextEnabled ? 'w-8/10' : 'w-7/10'">
-          <p class="absolute">
-            {{ TranslateKeys.Watermark_Text | translate }}
-          </p>
+    @if (dataModel.watermarkInfo().spectraWatermark && (!dataModel.watermarkInfo().customTextEnabled || currentRotationIndex() === 0)) {
+      <div class="absolute inset-0 flex flex-row items-center justify-center w-full"
+        animate.enter="animate-fade-in animate-duration-500"
+        animate.leave="animate-fade-out animate-duration-500">
+        <img src="assets/misc/icon.webp" class="max-h-5 max-w-5 px-0.5 py-0.5 align-middle" />
+        <div class="flex items-center justify-center" 
+        [class]="dataModel.sponsorInfo().enabled ? 'w-8/10' : 'w-4/10'"
+        >
+            <p>
+              {{ TranslateKeys.Watermark_Text | translate }}
+            </p>
+        </div>
       </div>
-    } @else if (dataModel.watermarkInfo().customTextEnabled) {
-      <div class="w-full">
+    } @else if (dataModel.watermarkInfo().customTextEnabled && (!dataModel.watermarkInfo().spectraWatermark || currentRotationIndex() === 1)) {
+      <div class="absolute inset-0 flex items-center justify-center w-full"
+        animate.enter="animate-fade-in animate-duration-500"
+        animate.leave="animate-fade-out animate-duration-500">
         <p>{{ dataModel.watermarkInfo().customText }}</p>
       </div>
     }
