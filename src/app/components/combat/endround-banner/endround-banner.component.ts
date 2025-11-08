@@ -12,9 +12,12 @@ import { DataModelService } from "../../../services/dataModel.service";
 export class EndroundBannerComponent {
   dataModel = inject(DataModelService);
 
-  runAnimation = false;
   hide = true;
-  animateOut = false;
+  showAnimation = false;
+  showRevealSquares = false;
+  showReverseSquares = false;
+  clipClosed = false;
+  clipClosing = false;
   preload = true;
 
   lastInRoundNumber = -1;
@@ -25,13 +28,23 @@ export class EndroundBannerComponent {
   tournamentBackgroundUrl = computed(() => {
     const backdrop = this.dataModel.tournamentInfo().backdropUrl;
     if (backdrop && backdrop !== "") return backdrop;
-    else return false;
+    else return "assets/misc/backdrop.png";
   });
 
   tournamentIconUrl = computed(() => {
     const logo = this.dataModel.tournamentInfo().logoUrl;
     if (logo && logo !== "") return logo;
     else return "assets/misc/logo.webp";
+  });
+
+  eventLogo = computed(() => {
+    const logo = this.dataModel.tournamentInfo().logoUrl;
+    return logo && logo !== "" ? logo : null;
+  });
+
+  eventName = computed(() => {
+    const name = this.dataModel.tournamentInfo().name;
+    return name && name !== "" ? name : "";
   });
 
   teamWon = computed(() => {
@@ -55,29 +68,76 @@ export class EndroundBannerComponent {
     return `gradient-${this.leftWon() ? "left" : "right"}-${this.dataModel.match().attackersWon ? "attacker" : "defender"}`;
   });
 
+  teamWonSide = computed(() => {
+    return this.dataModel.match().attackersWon 
+      ? TranslateKeys.Endround_Attacker 
+      : TranslateKeys.Endround_Defender;
+  });
+
+  teamWonLogoUrl = computed(() => {
+    const winningTeamIndex = this.teamWon();
+    return this.dataModel.teams()[winningTeamIndex]?.teamUrl || "assets/misc/logo.webp";
+  });
+
+  teamWonTricode = computed(() => {
+    const winningTeamIndex = this.teamWon();
+    return this.dataModel.teams()[winningTeamIndex]?.teamTricode || "";
+  });
+
+  onImageLoad() {
+    this.preload = false;
+  }
+
   ref = effect(() => {
     const roundPhase = this.dataModel.match().roundPhase;
     const roundNumber = this.dataModel.match().roundNumber;
+    
     if (roundPhase === "end") {
       if (roundNumber === this.lastInRoundNumber) return;
       this.lastInRoundNumber = roundNumber;
 
-      this.runAnimation = true;
       this.hide = false;
-      this.animateOut = false;
-      setTimeout(() => {
-        this.runAnimation = false;
-      }, 2600);
+
+      // Prepare reveal by collapsing banner clip and resetting squares
+      this.showAnimation = false;
+      this.showRevealSquares = false;
+      this.showReverseSquares = false;
+      this.clipClosed = true;
+      this.clipClosing = false;
+
+      // Delay animation start until layout & paint settle
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            this.showAnimation = true;
+            this.showRevealSquares = true;
+
+            // After initial animations complete (550ms reveal-text/background completes)
+            // Wait 5.66 seconds, then trigger reverse animation
+            setTimeout(() => {
+              this.clipClosing = true;
+              this.showReverseSquares = true;
+              
+              // Hide component after reverse animation completes (500ms)
+              setTimeout(() => {
+                this.hide = true;
+                this.showAnimation = false;
+                this.showRevealSquares = false;
+                this.showReverseSquares = false;
+                this.clipClosed = false;
+                this.clipClosing = false;
+              }, 260);
+            }, 550 + 5660); // 550ms (reveal complete) + 5660ms delay
+          });
+        });
+      });
     } else if (roundPhase === "shopping") {
       if (roundNumber === this.lastOutRoundNumber) return;
       this.lastOutRoundNumber = roundNumber;
 
-      this.runAnimation = false;
-      this.animateOut = true;
       setTimeout(() => {
         this.hide = true;
-        this.animateOut = false;
-      }, 300);
+      }, 3000); // Show for 3 seconds before hiding
     }
   });
 }

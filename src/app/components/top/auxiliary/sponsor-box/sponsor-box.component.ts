@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy, signal } from "@angular/core";
+import { Component, inject, OnDestroy, signal, effect } from "@angular/core";
 import { DataModelService } from "../../../../services/dataModel.service";
 
 @Component({
@@ -7,14 +7,17 @@ import { DataModelService } from "../../../../services/dataModel.service";
   templateUrl: "./sponsor-box.component.html",
   styleUrl: "./sponsor-box.component.css",
 })
-export class SponsorBoxComponent implements OnInit, OnDestroy {
+export class SponsorBoxComponent implements OnDestroy {
   dataModel = inject(DataModelService);
 
   currentIndex = signal(0);
   private intervalId?: number;
 
-  ngOnInit(): void {
-    this.setupSponsorRotation();
+  constructor() {
+    // Set up reactive sponsor rotation using effect
+    effect(() => {
+      this.setupSponsorRotation();
+    });
   }
 
   ngOnDestroy(): void {
@@ -26,9 +29,17 @@ export class SponsorBoxComponent implements OnInit, OnDestroy {
   private setupSponsorRotation(): void {
     const sponsorInfo = this.dataModel.sponsorInfo();
     
+    // Clear any existing interval
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = undefined;
+    }
+
+    // Reset to first index when sponsors change
+    this.currentIndex.set(0);
+    
     // Check if sponsors exist and are enabled
     if (!sponsorInfo.enabled || !sponsorInfo.sponsors || sponsorInfo.sponsors.length === 0) {
-      console.warn('Sponsor box: No sponsors available or not enabled');
       return;
     }
 
@@ -40,18 +51,12 @@ export class SponsorBoxComponent implements OnInit, OnDestroy {
       return;
     }
 
-    // Clear any existing interval
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
+    const sponsorCount = sponsorInfo.sponsors.length;
 
     // Only start rotation if there are multiple sponsors
-    if (sponsorInfo.sponsors.length > 1) {
+    if (sponsorCount > 1) {
       this.intervalId = window.setInterval(() => {
-        this.currentIndex.update((i) => {
-          const nextIndex = (i + 1) % sponsorInfo.sponsors.length;
-          return nextIndex;
-        });
+        this.currentIndex.update((i) => (i + 1) % sponsorCount);
       }, duration);
     }
   }

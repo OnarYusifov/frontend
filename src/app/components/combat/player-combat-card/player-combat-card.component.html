@@ -222,6 +222,7 @@
   <div class="vh-10 vw-256 absolute top-9"
   [class.flip]="right()"
   [style]="right() ? 'right: 2.75vw;' : 'left: 2.75vw;'"
+  [attr.mask]="!isAlive() ? 'url(#fade-mask-' + uniqueId + ')' : null"
   >
     <div class="absolute top-0.5 left-0.5 w-full h-full z-0">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="253.166" height="6.083" viewBox="0 0 253.166 6.083">
@@ -238,7 +239,7 @@
       <div
         class="absolute top-0.5 left-0.5 transition-all overflow-hidden z-1"
         animate.enter="animate-hpbar-in animate-duration-200"
-        animate.leave="animate-hpbar-out animate-duration-200"
+        animate.leave="animate-hpbar-out animate-duration-300"
         [style.width.%]="clamp(player.health, 0, 100)"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="253.166" height="6.1" viewBox="0 0 253.166 6.1">
@@ -261,8 +262,15 @@
   </div>
 
   @if (player.hasSpike) {
-    <div class="absolute -bottom-1" [class]="right() ? '-left-8' : '-right-8'">
-      <img class="vw-32 vh-32" src="assets/misc/Spike_Icon.svg" />
+    <div 
+    class="absolute -top-2 -right-3 vw-32 vh-32 flex items-center justify-center z-50"
+    animate.enter="animate-fade-in animate-duration-150"
+    animate.leave="animate-fade-out animate-duration-150"
+    >
+      <!-- White circle background -->
+      <div class="absolute vw-32 vh-32 rounded-full bg-white opacity-70"></div>
+      <!-- Spike icon with black filter -->
+      <img class="top-0.5 vw-28 vh-28 relative z-10" src="assets/misc/Spike_Icon.svg" style="filter: brightness(0);" />
     </div>
   }
 </div>

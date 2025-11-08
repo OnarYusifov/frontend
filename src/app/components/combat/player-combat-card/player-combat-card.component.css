@@ -1,5 +1,3 @@
-
-
 @keyframes weapon-collapse-side-in-left {
   0% {
     background: rgba(15, 25, 35, 0.6);
@@ -68,13 +66,21 @@
   }
 }
 
-@keyframes hpbar-out {
+@keyframes hpbar-out-collapse {
   0% {
     opacity: 1;
   }
   100% {
     width: 0%;
     opacity: 0.6;
+  }
+}
+
+@keyframes hpbar-out-gray {
+  0% {
+    filter: grayscale(0%);
+  }
+  100% {
     filter: grayscale(100%);
   }
 }
@@ -84,5 +90,7 @@
 }
 
 .animate-hpbar-out {
-  animation-name: hpbar-out;
+  animation:
+    hpbar-out-gray 0.1s,
+    hpbar-out-collapse 0.1s 0.2s;
 }
