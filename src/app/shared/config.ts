@@ -1,6 +1,6 @@
 export class Config {
-  serverEndpoint = "http://localhost:5200";
-  redirectUrl = "https://valospectra.com";
+  serverEndpoint = "http://overlay.trayb.az";
+  redirectUrl = "https://trayb.az";
   sponsorImageUrls: string[] = [];
   sponsorImageRotateSpeed = 5000; // in milliseconds
 
